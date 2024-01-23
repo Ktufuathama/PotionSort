@@ -1,0 +1,532 @@
+<Objs Version="1.1.0.1" xmlns="http://schemas.microsoft.com/powershell/2004/04">
+  <Obj RefId="0">
+    <TN RefId="0">
+      <T>System.Object[]</T>
+      <T>System.Array</T>
+      <T>System.Object</T>
+    </TN>
+    <LST>
+      <Obj RefId="1">
+        <TN RefId="1">
+          <T>SerializedBufferCellArray</T>
+          <T>System.Object</T>
+        </TN>
+        <ToString>│  │</ToString>
+        <Props>
+          <I32 N="Index">0</I32>
+          <Obj N="Cells" RefId="2">
+            <TN RefId="2">
+              <T>System.Management.Automation.Host.BufferCell[]</T>
+              <T>System.Array</T>
+              <T>System.Object</T>
+            </TN>
+            <LST>
+              <Obj RefId="3">
+                <TN RefId="3">
+                  <T>System.Management.Automation.Host.BufferCell</T>
+                  <T>System.ValueType</T>
+                  <T>System.Object</T>
+                </TN>
+                <ToString>'│' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">9474</C>
+                  <Obj N="ForegroundColor" RefId="4">
+                    <TN RefId="4">
+                      <T>System.ConsoleColor</T>
+                      <T>System.Enum</T>
+                      <T>System.ValueType</T>
+                      <T>System.Object</T>
+                    </TN>
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="5">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="6">
+                    <TN RefId="5">
+                      <T>System.Management.Automation.Host.BufferCellType</T>
+                      <T>System.Enum</T>
+                      <T>System.ValueType</T>
+                      <T>System.Object</T>
+                    </TN>
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="7">
+                <TNRef RefId="3" />
+                <ToString>' ' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">32</C>
+                  <Obj N="ForegroundColor" RefId="8">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="9">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="10">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="11">
+                <TNRef RefId="3" />
+                <ToString>' ' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">32</C>
+                  <Obj N="ForegroundColor" RefId="12">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="13">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="14">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="15">
+                <TNRef RefId="3" />
+                <ToString>'│' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">9474</C>
+                  <Obj N="ForegroundColor" RefId="16">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="17">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="18">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+            </LST>
+          </Obj>
+        </Props>
+      </Obj>
+      <Obj RefId="19">
+        <TNRef RefId="1" />
+        <ToString>│  │</ToString>
+        <Props>
+          <I32 N="Index">1</I32>
+          <Obj N="Cells" RefId="20">
+            <TNRef RefId="2" />
+            <LST>
+              <Obj RefId="21">
+                <TNRef RefId="3" />
+                <ToString>'│' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">9474</C>
+                  <Obj N="ForegroundColor" RefId="22">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="23">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="24">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="25">
+                <TNRef RefId="3" />
+                <ToString>' ' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">32</C>
+                  <Obj N="ForegroundColor" RefId="26">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="27">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="28">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="29">
+                <TNRef RefId="3" />
+                <ToString>' ' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">32</C>
+                  <Obj N="ForegroundColor" RefId="30">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="31">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="32">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="33">
+                <TNRef RefId="3" />
+                <ToString>'│' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">9474</C>
+                  <Obj N="ForegroundColor" RefId="34">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="35">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="36">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+            </LST>
+          </Obj>
+        </Props>
+      </Obj>
+      <Obj RefId="37">
+        <TNRef RefId="1" />
+        <ToString>│  │</ToString>
+        <Props>
+          <I32 N="Index">2</I32>
+          <Obj N="Cells" RefId="38">
+            <TNRef RefId="2" />
+            <LST>
+              <Obj RefId="39">
+                <TNRef RefId="3" />
+                <ToString>'│' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">9474</C>
+                  <Obj N="ForegroundColor" RefId="40">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="41">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="42">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="43">
+                <TNRef RefId="3" />
+                <ToString>' ' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">32</C>
+                  <Obj N="ForegroundColor" RefId="44">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="45">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="46">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="47">
+                <TNRef RefId="3" />
+                <ToString>' ' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">32</C>
+                  <Obj N="ForegroundColor" RefId="48">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="49">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="50">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="51">
+                <TNRef RefId="3" />
+                <ToString>'│' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">9474</C>
+                  <Obj N="ForegroundColor" RefId="52">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="53">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="54">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+            </LST>
+          </Obj>
+        </Props>
+      </Obj>
+      <Obj RefId="55">
+        <TNRef RefId="1" />
+        <ToString>│  │</ToString>
+        <Props>
+          <I32 N="Index">3</I32>
+          <Obj N="Cells" RefId="56">
+            <TNRef RefId="2" />
+            <LST>
+              <Obj RefId="57">
+                <TNRef RefId="3" />
+                <ToString>'│' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">9474</C>
+                  <Obj N="ForegroundColor" RefId="58">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="59">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="60">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="61">
+                <TNRef RefId="3" />
+                <ToString>' ' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">32</C>
+                  <Obj N="ForegroundColor" RefId="62">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="63">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="64">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="65">
+                <TNRef RefId="3" />
+                <ToString>' ' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">32</C>
+                  <Obj N="ForegroundColor" RefId="66">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="67">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="68">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="69">
+                <TNRef RefId="3" />
+                <ToString>'│' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">9474</C>
+                  <Obj N="ForegroundColor" RefId="70">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="71">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="72">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+            </LST>
+          </Obj>
+        </Props>
+      </Obj>
+      <Obj RefId="73">
+        <TNRef RefId="1" />
+        <ToString>└──┘</ToString>
+        <Props>
+          <I32 N="Index">4</I32>
+          <Obj N="Cells" RefId="74">
+            <TNRef RefId="2" />
+            <LST>
+              <Obj RefId="75">
+                <TNRef RefId="3" />
+                <ToString>'└' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">9492</C>
+                  <Obj N="ForegroundColor" RefId="76">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="77">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="78">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="79">
+                <TNRef RefId="3" />
+                <ToString>'─' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">9472</C>
+                  <Obj N="ForegroundColor" RefId="80">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="81">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="82">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="83">
+                <TNRef RefId="3" />
+                <ToString>'─' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">9472</C>
+                  <Obj N="ForegroundColor" RefId="84">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="85">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="86">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+              <Obj RefId="87">
+                <TNRef RefId="3" />
+                <ToString>'┘' Gray Black Complete</ToString>
+                <Props>
+                  <C N="Character">9496</C>
+                  <Obj N="ForegroundColor" RefId="88">
+                    <TNRef RefId="4" />
+                    <ToString>Gray</ToString>
+                    <I32>7</I32>
+                  </Obj>
+                  <Obj N="BackgroundColor" RefId="89">
+                    <TNRef RefId="4" />
+                    <ToString>Black</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                  <Obj N="BufferCellType" RefId="90">
+                    <TNRef RefId="5" />
+                    <ToString>Complete</ToString>
+                    <I32>0</I32>
+                  </Obj>
+                </Props>
+              </Obj>
+            </LST>
+          </Obj>
+        </Props>
+      </Obj>
+    </LST>
+  </Obj>
+</Objs>
