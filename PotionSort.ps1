@@ -39,7 +39,7 @@ class SerializedBufferCellArray
     $this.Cells[$row] = $cell
   }
   
-  [void] SetBufferCellType([int]$row, [consolecolor]$celltype)
+  [void] SetBufferCellType([int]$row, [buffercelltype]$celltype)
   {
     $cell = $this.Cells[$row]
     $cell.BufferCellType = $celltype
