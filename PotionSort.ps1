@@ -2,8 +2,13 @@ using namespace System.Management.Automation.Host
 
 class SerializedBufferCellArray
 {
+  <#
+    Transforms the multidimensional buffer cell array to something that can be exported.
+  #>
+  
   [int]$Index = 0
   [buffercell[]]$Cells
+  
 
   SerializedBufferCellArray() { }
 
@@ -39,7 +44,7 @@ class SerializedBufferCellArray
     $this.Cells[$row] = $cell
   }
   
-  [void] SetBufferCellType([int]$row, [buffercelltype]$celltype)
+  [void] SetBufferCellType([int]$row, [consolecolor]$celltype)
   {
     $cell = $this.Cells[$row]
     $cell.BufferCellType = $celltype
@@ -122,26 +127,60 @@ function Export-SerializedBufferCellArray {
   Set-Content -value $Xml -path $Path -errorAction 'Stop'
 }
 
+class PotionGraphics
+{
+  [object]$EmptyVial
+  [object]$SelectedVial
+  [object]$CurrentVial
+  [object]$HighlightedVial
+  
+  
+  GraphicElements() { }
+
+  [void] Import()
+  {
+    # Needs to be updated.
+    $HardcodePath = "C:\_\Sandbox\PotionSort\"
+    $this.EmptyVial = Import-SerializedBufferCellArray -Path "$($HardcodePath)_potion_empty.sbca.xml" -ToBufferCellArray
+    $this.SelectedVial = Import-SerializedBufferCellArray -Path "$($HardcodePath)_potion_selected.sbca.xml" -ToBufferCellArray
+    $this.CurrentVial = Import-SerializedBufferCellArray -Path "$($HardcodePath)_potion_current.sbca.xml" -ToBufferCellArray
+    $this.HighlightedVial = Import-SerializedBufferCellArray -Path "$($HardcodePath)_potion_outline.sbca.xml" -ToBufferCellArray
+  }
+}
+
 ################################################################################
 # Potions
 
+class Coordinates
+{
+  # Actual buffer coord.
+  [system.management.automation.host.coordinates]$Act
+  # Relative coord to other objects.
+  [system.management.automation.host.coordinates]$Rel
+
+
+  Coordinates([int]$xAct, [int]$yAct, [int]$xRel, [int]$yRel)
+  {
+    $this.Act = [system.management.automation.host.coordinates]@{X=$xAct;Y=$yAct}
+    $this.Rel = [system.management.automation.host.coordinates]@{X=$xRel;Y=$yRel}
+  }
+
+  Coordinates([hashtable]$act, [hashtable]$rel)
+  {
+    $this.Act = [system.management.automation.host.coordinates]$act
+    $this.Rel = [system.management.automation.host.coordinates]$rel
+  }
+}
+
 class Potion {
-  #[serializedbuffercellarray[]]$SBCA
   [int]$Id
   [int]$Size = 4
   [int[]]$Contents
-  [hashtable]$Coord = @{X=0;Y=0;R=0}
-  [bool]$IsSelected = $false
-  
+  [coordinates]$Coord
+  [bool]$IsSelected = $false 
+
 
   Potion() { }
-  
-  <#
-  PotionVial([serializedbuffercellarray[]]$sbca)
-  {
-    $this.SBCA = $sbca
-  }
-  #>
 
   [void] AddPotion([consolecolor]$color)
   {
@@ -158,141 +197,119 @@ class Potion {
     return $this.Contents.Count -eq 0
   }
 
-  <#
-  [consolecolor[]] GetContents()
-  {
-    $c = @()
-    for ($i = 0; $i -lt $this.SBCA.Length - 1; $i++) {
-      $c += $this.SBCA[$i].Cells[1].BackgroundColor.where({$_ -ne [consolecolor]::Black})
-    }
-    return $c
-  }
-  #>
-
   [void] Show()
   {
     $this.Contents.foreach({
-      Write-Host "  " -BackgroundColor ($_ -as [consolecolor])
+      Write-Host "  " -BackgroundColor ($_ -as [consolecolor]) -NoNewLine
     })
   }
 }
 
-
-class PotionShelf
+class PotionMgmt
 {
   [potion[]]$Potions
-  [system.management.automation.host.coordinates[]]$Positions
-  [int]$Width = 5
-  [array]$Current = 0
-  [array]$Selected
+  [potiongraphics]$Graphics
+  [int]$Current
+  [int]$Selected
 
-  hidden [hashtable]$P = @{X=10;Y=10}
-  hidden [system.management.automation.host.buffercell[,]]$EmptyVial
-  hidden [system.management.automation.host.buffercell[,]]$SelectedVial
-  hidden [system.management.automation.host.buffercell[,]]$CurrentVial
-  hidden [system.management.automation.host.buffercell[,]]$HighlightedVial
+  hidden [int]$Width = 5
+  hidden [system.management.automation.host.coordinates]$InitCoord = @{X=10;Y=10}
+  
 
-  PotionShelf()
+  PotionMgmt()
   {
-    
+    $this.Graphics = [potiongraphics]::new()
+    $this.Graphics.import()
   }
 
-  [void] LoadGraphics()
-  {
-    $this.EmptyVial = Import-SerializedBufferCellArray -Path 'C:\_\Sandbox\PotionSort\_potion_empty.sbca.xml' -ToBufferCellArray
-    $this.SelectedVial = Import-SerializedBufferCellArray -Path 'C:\_\Sandbox\PotionSort\_potion_selected.sbca.xml' -ToBufferCellArray
-    $this.CurrentVial = Import-SerializedBufferCellArray -Path 'C:\_\Sandbox\PotionSort\_potion_current.sbca.xml' -ToBufferCellArray
-    $this.HighlightedVial = Import-SerializedBufferCellArray -Path 'C:\_\Sandbox\PotionSort\_potion_outline.sbca.xml' -ToBufferCellArray
-  }
-
-  [void] BuildShelf()
-  {
-    $this.Positions = $null
-    $x = $this.P.X
-    $y = $this.P.Y
-    for ($i = 1; $i -le $this.Potions.Count; $i++) {
-      $this.Positions += @{X=$x;Y=$y}
-      if (($i % $this.Width) -eq 0) {
-        $x = $this.P.X
-        $y = $y + 5
-      }
-      else {
-        $x = $x + 4
+  <#
+    [void] BuildShelf()
+    {
+      $this.Positions = $null
+      $x = $this.P.X
+      $y = $this.P.Y
+      for ($i = 1; $i -le $this.Potions.Count; $i++) {
+        $this.Positions += @{X=$x;Y=$y}
+        if (($i % $this.Width) -eq 0) {
+          $x = $this.P.X
+          $y = $y + 5
+        }
+        else {
+          $x = $x + 4
+        }
       }
     }
-  }
+  #>
 
   [void] NewPotion()
   {
-    # Load potion SBCA.
-    # Determine index and add.
+    # Create new potion.
+    $Potion = [potion]::new()
+    if ($this.Potions.Count -eq 0) {
+      $Potion.Id = 0
+    }
+    else {
+      $Potion.Id = $this.Potions.Count + 1
+    }
+    $this.addPotion($potion)    
   }
 
-  [void] AddPotion()
+  [void] AddPotion([potion]$newPotion)
   {
-    $Potion = [potion]::new()
-    $Potion.Id = $this.Potions.Count + 1
-
-    if (($this.Potions.Count % $this.Width) -eq 0) {
-      # Move to next row.
+    $Potion = $newPotion
+    if ($this.Potions.Count -eq 0) {
+      $Potion.Coord = [coordinates]::new($this.InitCoord.X, $this.InitCoord.Y, 0, 0)
     }
+    else {
+      $P = $this.Potions[-1].Coord
+      if (($this.Potions.Count % $this.Width) -eq 0) {
+        $Potion.Coord = [coordinates]::new($this.InitCoord.X, $P.Act.Y + 5, $P.Rel.X + 1, 0)
+      }
+      else {
+        $Potion.Coord = [coordinates]::new($P.Act.X + 4, $P.Act.Y, $P.Rel.X, $P.Rel.Y + 1)
+      }
+    }
+    $this.Potions += $Potion
+  }
+
+  [void] RemovePotion([int]$potionId)
+  {
+    # Not implimented. Removing one potion would require the postions to be regenerated.
   }
 
   [void] DrawPotions()
   {
-    $this.Positions.foreach({ $global:host.UI.RawUI.setBufferContents($_, $this.EmptyVial) })
+    $this.Potions.foreach({ $global:host.UI.RawUI.setBufferContents($_.Coord.Act, $this.Graphics.EmptyVial) })
   }
-}
-
-
-
-
-class Coordinates
-{
-  [int]$X
-  [int]$Y
-  [int]$R
 }
 
 ################################################################################
 # Main
 
-function Test-Potion {
-  Clear-Host
-  Write-Host "===== Potion Shelf ====="
-  $BCA = Import-SerializedBufferCellArray -Path 'C:\_\Sandbox\PotionSort\_potion_empty.sbca.xml' -ToBufferCellArray
-  (20,24,28,32,36).foreach({ $host.UI.RawUI.setBufferContents(@{x=$_; y=10}, $BCA) })
-  (20,24,28,32,36).foreach({ $host.UI.RawUI.setBufferContents(@{x=$_; y=16}, $BCA) })
-}
-
 function Start-PotionSort {
   [cmdletbinding()]
   param()
 
-  $y = $host.UI.RawUI.CursorPosition.Y + 1
-  $x = $host.UI.RawUI.WindowSize.Width - 1
-  $c = @{X=$x; Y=$y}
+  #$y = $host.UI.RawUI.CursorPosition.Y + 1
+  #$x = $host.UI.RawUI.WindowSize.Width - 1
 
   # Create instance.
-  $PotionVial = [potionvial]::new()
-  $PotionShelf = [potionshelf]::new()
-  $PotionShelf.loadGraphics()
+  $PotionMgmt = [PotionMgmt]::new()
   (0..8).foreach({
-    $PotionShelf.Potions += $PotionVial
+    $PotionMgmt.newPotion()
   })
-  $PotionShelf.buildShelf()
-  Clear-Host
-  $PotionShelf.drawPotions()
+  $PotionMgmt.drawPotions()
 
   # Set starting position
-  $global:host.UI.RawUI.setBufferContents($PotionShelf.Positions[0], $PotionShelf.CurrentVial)
-  $PotionShelf.Potions[0].IsSelected = $true
+  $global:host.UI.RawUI.setBufferContents($PotionMgmt.Potions[0].Coord.Act, $PotionMgmt.Graphics.CurrentVial)
+  $PotionMgmt.Current = 1
+  $PotionMgmt.Potions[0].IsSelected = $true
   
   while ($true) {
     $k = [console]::readKey($true)
     switch -regex ($k.Key) {
       'W|UpArrow' {
-        
+
       }
       'A|LeftArrow' {
         
@@ -317,8 +334,31 @@ function Start-PotionSort {
 }
 
 
-# Placeholder ?
-class GraphicElements
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class GraphicsTest
 {
   [string]$HorizontalBoxDoubleChar  = [string][char]9552
   [string]$VerticalBoxDoubleChar    = [string][char]9553
@@ -338,9 +378,6 @@ class GraphicElements
   [string]$VerticalDottedChar       = [string][char]9478
   [string]$HorizontalDottedChar2    = [string][char]9480
   [string]$VerticalDottedChar2      = [string][char]9482
-  
-  GraphicElements()
-  {
-    
-  }
+
+  GraphicsTest() { }
 }
